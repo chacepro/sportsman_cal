@@ -1,0 +1,68 @@
+/* 
+    Document   : sportsman1
+    Created on : Jun 4, 2013, 12:35:04 PM
+    Author     : Chace
+*/
+
+body {
+   padding: 0px;
+   margin: 0px;
+   font-family: 'Archivo Narrow', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;*/
+}
+
+div#geoLoc, #browserCheck, #nowWrap {
+   display: block;
+   margin-right: auto;
+   margin-left: auto;
+   margin-top: 15px;
+   margin-bottom: 5px;
+   padding: 10px;
+   width: 80%;
+   border-radius: 5px;
+   box-shadow: 0px 0px 5px #666;
+   font-size: 1em;
+   overflow: auto;
+}
+
+div#nowSub1, #nowSub2 {
+   float: left;
+   text-align: left;
+   padding: 15px;
+}
+
+div#nowMain {
+   float: left;
+   text-align: center;
+   margin-right: 10px;
+   margin-left: 10px;
+   /*border: 1px solid silver;*/
+}
+
+span.fLow { color: blue; }
+span.fHigh { color: red; }
+
+span.genHeading {
+   font-weight: bold;
+   text-transform: uppercase;
+   font-size: 1.3em;
+}
+
+span.wthrKey {
+   font-weight: bold;
+}
+
+span.nowTemp {
+   position: relative;
+   font-size: 4em;
+}
+
+span.degreeSym {
+   position: relative;
+      top: -20px;
+   font-size: 2em;
+}
+
+div#map-canvas {
+   box-shadow: 0px 0px 5px #666;
+}
+
