@@ -60,7 +60,16 @@ function initForecast(myLat,myLon) {
       url: myForecastUrl,
       dataType: 'jsonp',
       success: function(data){
-          $('span#wSummary', $('body')).text(data.currently.summary);
+          switch (data.currently.summary) {
+            case "FLURRIES":
+               $('span#wSummary', $('body')).html("<img src='icons/snow.png' />");
+            case "SNOW":
+               $('span#wSummary', $('body')).html("<img src='icons/snow.png' />");
+            case "LIGHT SNOW":
+               $('span#wSummary', $('body')).html("<img src='icons/snow.png' />");
+            default: 
+               $('span#wSummary', $('body')).text(data.currently.summary);
+          }
           $('span#wTemp', $('body')).text(Math.round(data.currently.temperature));
           $('span#wPreProb', $('body')).text(convertToPercent(data.currently.precipProbability));
           $('span#wPreType', $('body')).text(data.currently.precipType);

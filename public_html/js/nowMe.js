@@ -55,11 +55,11 @@
       initialize: function(){
         if (jQuery.browser.mobile) {
            $('div#browserCheck', this.el).html('Mobile Browser Detected...');
-           //$("div#browserCheck", this.el).slideToggle();
+           $("div#browserCheck", this.el).slideToggle();
         } else {
            $.getJSON('getIP.php', function(data){
               $('div#browserCheck', this.el).html('Normal Browser Detected... IP: ' + data.ip);
-              //$("div#browserCheck", this.el).slideToggle();
+              $("div#browserCheck", this.el).slideToggle();
            });
         }
       }
