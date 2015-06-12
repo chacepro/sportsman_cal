@@ -66,3 +66,7 @@ div#map-canvas {
    box-shadow: 0px 0px 5px #666;
 }
 
+img#weathericon {
+   width: 50px;
+   height: 50px;
+}

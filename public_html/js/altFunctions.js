@@ -1,12 +1,11 @@
 /* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * 6/12/15 - Updating geolocation logic to be more accurate. (Chace)
  */
 
 function initMap() {
    var map;
    var mapOptions = {
-      zoom: 11,
+      zoom: 13,
       //center: new google.maps.LatLng(myLat,myLon),
       mapTypeId: google.maps.MapTypeId.ROADMAP
    };
@@ -23,7 +22,7 @@ function initMap() {
          var marker = new google.maps.Marker({
             map: map,
             position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
-            title: 'Wetback!'
+            title: 'Hi!'
          });
          map.setCenter(pos);
       }, function(error) {
@@ -60,15 +59,25 @@ function initForecast(myLat,myLon) {
       url: myForecastUrl,
       dataType: 'jsonp',
       success: function(data){
-          switch (data.currently.summary) {
+          switch (data.currently.summary.toUpperCase()) {
             case "FLURRIES":
-               $('span#wSummary', $('body')).html("<img src='icons/snow.png' />");
+               $('span#wSummary', $('body')).html("<img id='weathericon' src='icons/snow.png' />");
+               break;
             case "SNOW":
-               $('span#wSummary', $('body')).html("<img src='icons/snow.png' />");
+               $('span#wSummary', $('body')).html("<img id='weathericon' src='icons/snow.png' />");
+               break;
             case "LIGHT SNOW":
-               $('span#wSummary', $('body')).html("<img src='icons/snow.png' />");
+               $('span#wSummary', $('body')).html("<img id='weathericon' src='icons/snow.png' />");
+               break;
+            case 'MOSTLY CLOUDY':
+               $('span#wSummary', $('body')).html("<img id='weathericon' src='icons/partly-cloudy-day.png' />");
+               break;
+            case 'CLOUDY':
+               $('span#wSummary', $('body')).html("<img id='weathericon' src='icons/cloudy.png' />");
+               break;
             default: 
                $('span#wSummary', $('body')).text(data.currently.summary);
+               //$('span#wSummary', $('body')).html("<img src='icons/clear-day.png' />");
           }
           $('span#wTemp', $('body')).text(Math.round(data.currently.temperature));
           $('span#wPreProb', $('body')).text(convertToPercent(data.currently.precipProbability));
@@ -156,7 +165,7 @@ function unixToDate(unixTime){
  }
 
 function convertToPercent(fraction) {
-   if (fraction == " ") fraction = 0;
+   if (fraction === " ") fraction = 0;
    return Math.round((fraction * 100) * 100)/100 + '%';
 }
 
