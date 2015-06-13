@@ -75,6 +75,9 @@ function initForecast(myLat,myLon) {
             case 'CLOUDY':
                $('span#wSummary', $('body')).html("<img id='weathericon' src='icons/cloudy.png' />");
                break;
+            case 'SUNNY':
+               $('span#wSummary', $('body')).html("<img id='weathericon' src='icons/clear-day.png' />");
+               break;
             default: 
                $('span#wSummary', $('body')).text(data.currently.summary);
                //$('span#wSummary', $('body')).html("<img src='icons/clear-day.png' />");
