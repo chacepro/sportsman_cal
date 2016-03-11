@@ -1,12 +1,12 @@
 /* 
  * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * and open the template in the editor
  */
 
 function initMap() {
    var map;
    var mapOptions = {
-      zoom: 11,
+      zoom: 10,
       //center: new google.maps.LatLng(myLat,myLon),
       mapTypeId: google.maps.MapTypeId.ROADMAP
    };
