@@ -62,13 +62,19 @@ function initForecast(myLat,myLon) {
       success: function(data){
           switch (data.currently.summary.toUpperCase()) {
             case "FLURRIES":
-               $('span#wSummary', $('body')).html("<img src='icons/snow.png' />");
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/snow.png' />");
+               break;
             case "SNOW":
-               $('span#wSummary', $('body')).html("<img src='icons/snow.png' />");
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/snow.png' />");
+               break;
             case "LIGHT SNOW":
-               $('span#wSummary', $('body')).html("<img src='icons/snow.png' />");
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/sleet.png' />");
+               break;
+            case "SLEET":
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/sleet.png' />");
+               break;
             default: 
-               $('span#wSummary', $('body')).text(data.currently.summary);
+               $('span#wSummary', $('body')).text(data.currently.summary.toUpperCase());
           }
           $('span#wTemp', $('body')).text(Math.round(data.currently.temperature));
           $('span#wPreProb', $('body')).text(convertToPercent(data.currently.precipProbability));

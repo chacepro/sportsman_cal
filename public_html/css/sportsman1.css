@@ -11,6 +11,11 @@ body {
    background-color: rgba(239, 238, 255, 0.5);
 }
 
+img.wImage {
+    max-width: 50%;
+    height: auto;
+}
+
 div#geoLoc, #browserCheck, #nowWrap, .chunk {
    display: block;
    background-color: #fff;
