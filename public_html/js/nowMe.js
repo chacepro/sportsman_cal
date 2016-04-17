@@ -21,6 +21,7 @@
    $("div#weather",$("body")).hide();
    $("div#browserCheck",$("body")).hide();
    $("div#geoLoc",$("body")).hide();
+   $("div.chunk",$("body")).hide();
    
    var Zip = Backbone.Model.extend({
        defaults: {

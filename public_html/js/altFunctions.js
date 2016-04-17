@@ -1,6 +1,8 @@
 /* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor
+ 
+ ZIP CODES: http://federalgovernmentzipcodes.us/
  */
 
 function initMap() {
@@ -19,11 +21,12 @@ function initMap() {
          //$(document).focus(function(){ initForecast(position.coords.latitude,position.coords.longitude); });
          $(window).focus(function() { initForecast(position.coords.latitude,position.coords.longitude); });
          $("div#weather",$("body")).slideToggle();
+         $("div.chunk",$("body")).slideToggle();
          getCity(position.coords.latitude,position.coords.longitude);
          var marker = new google.maps.Marker({
             map: map,
             position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
-            title: 'Wetback!'
+            title: 'BangBang'
          });
          map.setCenter(pos);
       }, function(error) {
@@ -72,6 +75,15 @@ function initForecast(myLat,myLon) {
                break;
             case "SLEET":
                $('span#wSummary', $('body')).html("<img class='wImage' src='icons/sleet.png' />");
+               break;
+            case "FOGGY":
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/fog.png' />");
+               break;
+            case "MOSTLY CLOUDY":
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.png' />");
+               break;
+            case "OVERCAST":
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.png' />");
                break;
             default: 
                $('span#wSummary', $('body')).text(data.currently.summary.toUpperCase());
@@ -236,6 +248,8 @@ function getCity(lat, lng) {
             $('span#gState', $('body')).text(state.short_name);
             $('span#gCountry', $('body')).text(country.short_name);
             $('span#gZip', $('body')).text(zip.short_name);
+            $('span#gLat', $('body')).text(lat);
+            $('span#gLng', $('body')).text(lng);
             $("div#geoLoc",$("body")).slideToggle();
          } else {
             alert("No results found");
