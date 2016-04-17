@@ -4,7 +4,7 @@
    <head>
       <title>Need a better name for this app...</title>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <link rel="stylesheet" type="text/css" href="css/sportsman1.css">
+      <link rel="stylesheet" type="text/css" href="css/sportsman1.css" class="main">
       <link href='http://fonts.googleapis.com/css?family=Archivo+Narrow:400,700,400italic' rel='stylesheet' type='text/css'>
       <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
       <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -21,7 +21,6 @@
       <input type='text' id='entry'></br>
       <button id='zip'>Get Zip</button></br>
       <div id='myLoc'>...</div>-->
-      <div id='browserCheck'></div>
       <div id="geoLoc">
          <span class="wthrKey">Approximate Location: </span>
          <span class="wthrVal" id="gLocation"></span> 
@@ -91,6 +90,19 @@
          </div>
 
       </div>
+        <div class="chunk">
+            <div class="metaInfo" id="browserSize"></div>
+            <div class="metaInfo" id="metrics"> <span>Window: </span>
+             <span id="winH">0</span> x <span id="winW">0</span>
+                <br/> <span>Document: </span>
+             <span id="docH">0</span> x <span id="docW">0</span>
+                <br/> <span>Scroll: </span>
+             <span id="scrH">0</span> x <span id="scrW">0</span>
+                <br/><span>Device: </span>
+                <span id="yDevice"> 0 </span>
+            </div>
+        </div>
+
       <script src="js/nowMe.js"></script>
    </body>
 </html>

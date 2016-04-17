@@ -3,8 +3,21 @@
  BY: Chace L. Prochazka
  */
 
-(function($){
-   
+(function ($) {
+
+ $(document).ready(function () {
+     updateMetrics();
+     updateStyleSheet();
+ })
+ $(window).resize(function () {
+     updateMetrics();
+     updateStyleSheet();
+ });
+ $(window).scroll(function () {
+     updateMetrics();
+     updateStyleSheet();
+ });
+    
    $("div#weather",$("body")).hide();
    $("div#browserCheck",$("body")).hide();
    $("div#geoLoc",$("body")).hide();
@@ -14,7 +27,7 @@
            id:'80015'
        },
        url: function(){
-           if (this.isNew()){
+           if (this.isNew()) {
                return "./php/getZip.php";
            } else {
                return "./php/getZip.php?id=" + this.id;
@@ -50,21 +63,6 @@
        }
    });
 
-   var browserTest = Backbone.View.extend({
-      el: $('body'),
-      initialize: function(){
-        if (jQuery.browser.mobile) {
-           $('div#browserCheck', this.el).html('Mobile Browser Detected...');
-           $("div#browserCheck", this.el).slideToggle();
-        } else {
-           $.getJSON('getIP.php', function(data){
-              $('div#browserCheck', this.el).html('Normal Browser Detected... IP: ' + data.ip);
-              $("div#browserCheck", this.el).slideToggle();
-           });
-        }
-      }
-   });
-
    var gMap = Backbone.View.extend({
       el: $('body'),
       initialize: function(){
@@ -79,7 +77,6 @@
    });
 
    var Loc = new Location();
-   var Browse = new browserTest();
    var Map = new gMap();
-
+    
 })(jQuery);
