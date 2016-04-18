@@ -21,6 +21,7 @@
         $x = '0';
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
         if (mysqli_connect_errno()) {
+            printf(DB_HOST);
             printf("Connect failed: %s\n", mysqli_connect_error());
             exit();
         }
@@ -29,7 +30,7 @@
         $x = $_GET['id'];
         
         $result = $mysqli->query("select *
-                                from zipcode
+                                from tblZipCode
                                 where Zipcode = '$x'
                                 and LocationType = 'PRIMARY'") or die(mysql_error());
         if($result){
