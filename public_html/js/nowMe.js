@@ -56,9 +56,22 @@
                    var length = 19;
                    $('div#myLoc', this.el).html('');
                    for (var i = 0; i <= length; i++) {
+                       /* '6 is lat, 7 is long */
                        var myTemp = $('div#myLoc', this.el).html();
-                       $('div#myLoc', this.el).html(myTemp + '</br>' + zip.attributes[i]);
+                       if (i == 3) {
+                           $('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i] + ', ');
+                       }  else if (i == 4) {
+                           $('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i] + '<br/>');
+                       } else if (i == 6) {
+                           $('div#myLoc', this.el).html(myTemp + 'Lat: ' + zip.attributes[i] + '<br/>');
+                           var srchLat = zip.attributes[i];
+                       } else if (i == 7) {
+                           $('div#myLoc', this.el).html(myTemp + 'Long: ' + zip.attributes[i]);
+                           var srchLng = zip.attributes[i];
+                       }
                    }
+                   initForecast(srchLat,srchLng);
+                   getCity(srchLat,srchLng);
                }
            })
        }

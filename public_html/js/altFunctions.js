@@ -82,6 +82,9 @@ function initForecast(myLat,myLon) {
             case "MOSTLY CLOUDY":
                $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.png' />");
                break;
+            case "PARTLY CLOUDY":
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/partly-cloudy-day.png' />");
+               break;
             case "OVERCAST":
                $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.png' />");
                break;
