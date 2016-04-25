@@ -5,38 +5,60 @@
  ZIP CODES: http://federalgovernmentzipcodes.us/
  */
 
-function initMap() {
+function initMap(gLat, gLng) {
+   gLat = gLat || 0;
+   gLng = gLng || 0;
    var map;
    var mapOptions = {
-      zoom: 14,
-      //center: new google.maps.LatLng(myLat,myLon),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      zoom: 13,
+      mapTypeId: google.maps.MapTypeId.HYBRID
    };
    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
      // Try HTML5 geolocation
-   if(navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-         var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-         initForecast(position.coords.latitude,position.coords.longitude);
-         //$(document).focus(function(){ initForecast(position.coords.latitude,position.coords.longitude); });
-         $(window).focus(function() { initForecast(position.coords.latitude,position.coords.longitude); });
-         $("div#weather",$("body")).slideToggle();
-         $("div.chunk",$("body")).slideToggle();
-         getCity(position.coords.latitude,position.coords.longitude);
+   if(gLat == 0 && gLng == 0) {
+      
+      if(navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            initForecast(position.coords.latitude,position.coords.longitude);
+            //$(document).focus(function(){ initForecast(position.coords.latitude,position.coords.longitude); });
+            $(window).focus(function() {
+               initForecast(position.coords.latitude,position.coords.longitude); 
+            });
+            $("div#weather",$("body")).slideToggle();
+            $("div.chunk",$("body")).slideToggle();
+            getCity(position.coords.latitude,position.coords.longitude);
+            var marker = new google.maps.Marker({
+               map: map,
+               position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+               title: 'BangBang'
+            });
+            map.setCenter(pos);
+         }, function(error) {
+            handleNoGeolocation(true);
+         }, {
+            maximumAge: 600000, 
+            timeout: 10000
+         });
+      } else {
+         handleNoGeolocation(false);
+      }
+      
+   } else {
+         var pos = new google.maps.LatLng(gLat,gLng);
+         initForecast(gLat,gLng);
+         $(window).focus(function() {
+            initForecast(gLat,gLng); 
+         });
+         //$("div#weather",$("body")).slideToggle();
+         //$("div.chunk",$("body")).slideToggle();
+         getCity(gLat,gLng);
          var marker = new google.maps.Marker({
             map: map,
-            position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+            position: new google.maps.LatLng(gLat,gLng),
             title: 'BangBang'
          });
          map.setCenter(pos);
-      }, function(error) {
-         handleNoGeolocation(true);
-      }, {
-         maximumAge: 600000, 
-         timeout: 10000
-      });
-   } else {
-      handleNoGeolocation(false);
    }
 }
 
@@ -87,6 +109,9 @@ function initForecast(myLat,myLon) {
                break;
             case "OVERCAST":
                $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.png' />");
+               break;
+            case "CLEAR":
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/clear-day.png' />");
                break;
             default: 
                $('span#wSummary', $('body')).text(data.currently.summary.toUpperCase());

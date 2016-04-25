@@ -70,8 +70,9 @@
                            var srchLng = zip.attributes[i];
                        }
                    }
-                   initForecast(srchLat,srchLng);
-                   getCity(srchLat,srchLng);
+                  initMap(srchLat,srchLng)
+                   //initForecast(srchLat,srchLng);
+                   //getCity(srchLat,srchLng);
                }
            })
        }
