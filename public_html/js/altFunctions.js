@@ -8,10 +8,11 @@
 function initMap(gLat, gLng) {
    gLat = gLat || 0;
    gLng = gLng || 0;
+   $(window).off('focus');
    var map;
    var mapOptions = {
-      zoom: 13,
-      mapTypeId: google.maps.MapTypeId.HYBRID
+      zoom: 14,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
    };
    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
      // Try HTML5 geolocation
@@ -19,18 +20,17 @@ function initMap(gLat, gLng) {
       
       if(navigator.geolocation) {
          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            initForecast(position.coords.latitude,position.coords.longitude);
-            //$(document).focus(function(){ initForecast(position.coords.latitude,position.coords.longitude); });
-            $(window).focus(function() {
-               initForecast(position.coords.latitude,position.coords.longitude); 
-            });
+            gLat = position.coords.latitude
+            gLng = position.coords.longitude
+            var pos = new google.maps.LatLng(gLat,gLng);
+            initForecast(gLat,gLng);
+
             $("div#weather",$("body")).slideToggle();
             $("div.chunk",$("body")).slideToggle();
-            getCity(position.coords.latitude,position.coords.longitude);
+            getCity(gLat,gLng);
             var marker = new google.maps.Marker({
                map: map,
-               position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+               position: new google.maps.LatLng(gLat,gLng),
                title: 'BangBang'
             });
             map.setCenter(pos);
@@ -47,9 +47,7 @@ function initMap(gLat, gLng) {
    } else {
          var pos = new google.maps.LatLng(gLat,gLng);
          initForecast(gLat,gLng);
-         $(window).focus(function() {
-            initForecast(gLat,gLng); 
-         });
+
          //$("div#weather",$("body")).slideToggle();
          //$("div.chunk",$("body")).slideToggle();
          getCity(gLat,gLng);
@@ -60,6 +58,9 @@ function initMap(gLat, gLng) {
          });
          map.setCenter(pos);
    }
+   $(window).on("focus", function() {
+      initForecast(gLat,gLng); 
+   });
 }
 
 function handleNoGeolocation(errorFlag) {
@@ -275,7 +276,9 @@ function getCity(lat, lng) {
             $('span#gCounty', $('body')).text(county.short_name);
             $('span#gState', $('body')).text(state.short_name);
             $('span#gCountry', $('body')).text(country.short_name);
-            $('span#gZip', $('body')).text(zip.short_name);
+            if (zip) {
+               $('span#gZip', $('body')).text(zip.short_name);
+            }
             $('span#gLat', $('body')).text(lat);
             $('span#gLng', $('body')).text(lng);
             $("div#geoLoc",$("body")).slideToggle();
