@@ -112,7 +112,10 @@ function initForecast(myLat,myLon) {
                $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.png' />");
                break;
             case "CLEAR":
-               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/clear-day.png' />");
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/clear-day.svg' />");
+               break;
+            case "BREEZY":
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/wind.png' />");
                break;
             default: 
                $('span#wSummary', $('body')).text(data.currently.summary.toUpperCase());
