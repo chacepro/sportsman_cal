@@ -103,19 +103,19 @@ function initForecast(myLat,myLon) {
                $('span#wSummary', $('body')).html("<img class='wImage' src='icons/fog.png' />");
                break;
             case "MOSTLY CLOUDY":
-               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.png' />");
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.svg' />");
                break;
             case "PARTLY CLOUDY":
-               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/partly-cloudy-day.png' />");
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/partly-cloudy-day.svg' />");
                break;
             case "OVERCAST":
-               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.png' />");
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.svg' />");
                break;
             case "CLEAR":
                $('span#wSummary', $('body')).html("<img class='wImage' src='icons/clear-day.svg' />");
                break;
             case "BREEZY":
-               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/wind.png' />");
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/wind.svg' />");
                break;
             default: 
                $('span#wSummary', $('body')).text(data.currently.summary.toUpperCase());
