@@ -65,12 +65,12 @@
                        if (i == 3) {
                            $('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i] + ', ');
                        }  else if (i == 4) {
-                           $('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i] + ' | ');
+                           $('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i]);
                        } else if (i == 6) {
-                           $('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i] + ',');
+                           //$('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i] + ',');
                            var srchLat = zip.attributes[i];
                        } else if (i == 7) {
-                           $('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i]);
+                           //$('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i]);
                            var srchLng = zip.attributes[i];
                        }
                    }
