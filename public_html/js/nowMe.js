@@ -8,7 +8,11 @@
  $(document).ready(function () {
      updateMetrics();
      updateStyleSheet();
- })
+    $('input#entry').keypress(function(e){
+      if(e.keyCode==13)
+      $('#find').click();
+    });
+ });
  $(window).resize(function () {
      updateMetrics();
      updateStyleSheet();
@@ -39,7 +43,7 @@
    var Location = Backbone.View.extend({
        el: $('body'), 
        events: {
-         'click button#zip': 'getZip'
+         'click #find': 'getZip'
        },
        initialize: function(){
          _.bindAll(this, 'render', 'getZip'); 

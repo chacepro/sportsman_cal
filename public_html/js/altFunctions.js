@@ -3,6 +3,7 @@
  * and open the template in the editor
  
  ZIP CODES: http://federalgovernmentzipcodes.us/
+ AUTO COMPLETE: https://www.devbridge.com/sourcery/components/jquery-autocomplete/
  */
 
 function initMap(gLat, gLng) {
@@ -12,7 +13,8 @@ function initMap(gLat, gLng) {
    var map;
    var mapOptions = {
       zoom: 14,
-      mapTypeId: google.maps.MapTypeId.TERRAIN
+      // TERRAIN, ROADMAP, SATELLITE, HYBRID
+      mapTypeId: google.maps.MapTypeId.ROADMAP
    };
    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
      // Try HTML5 geolocation
