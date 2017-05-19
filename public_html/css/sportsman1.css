@@ -1,7 +1,7 @@
-/* 
+/*
     Document   : sportsman1
     Created on : Jun 4, 2013, 12:35:04 PM
-    Author     : Chace 
+    Author     : Chace Prochazka
 */
 
 body {
@@ -80,4 +80,3 @@ span.degreeSym {
 div#map-canvas {
    box-shadow: 0px 0px 5px #666;
 }
-
