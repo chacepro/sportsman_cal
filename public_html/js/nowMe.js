@@ -1,5 +1,6 @@
-/* 
+/*
  CREATED: 4/30/13
+ Hmmmm
  BY: Chace L. Prochazka
  */
 
@@ -17,12 +18,12 @@
      updateMetrics();
      updateStyleSheet();
  });
-    
+
    $("div#weather",$("body")).hide();
    $("div#browserCheck",$("body")).hide();
    $("div#geoLoc",$("body")).hide();
    $("div.chunk",$("body")).hide();
-   
+
    var Zip = Backbone.Model.extend({
        defaults: {
            id:'80015'
@@ -37,12 +38,12 @@
    });
 
    var Location = Backbone.View.extend({
-       el: $('body'), 
+       el: $('body'),
        events: {
          'click button#zip': 'getZip'
        },
        initialize: function(){
-         _.bindAll(this, 'render', 'getZip'); 
+         _.bindAll(this, 'render', 'getZip');
          this.render();
        },
        render: function(){
@@ -79,5 +80,5 @@
 
    var Loc = new Location();
    var Map = new gMap();
-    
+
 })(jQuery);
