@@ -1,7 +1,7 @@
-/* 
+/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor
- 
+
  ZIP CODES: http://federalgovernmentzipcodes.us/
  AUTO COMPLETE: https://www.devbridge.com/sourcery/components/jquery-autocomplete/
  */
@@ -19,7 +19,7 @@ function initMap(gLat, gLng) {
    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
      // Try HTML5 geolocation
    if(gLat == 0 && gLng == 0) {
-      
+
       if(navigator.geolocation) {
          navigator.geolocation.getCurrentPosition(function(position) {
             gLat = position.coords.latitude
@@ -39,13 +39,13 @@ function initMap(gLat, gLng) {
          }, function(error) {
             handleNoGeolocation(true);
          }, {
-            maximumAge: 600000, 
+            maximumAge: 600000,
             timeout: 10000
          });
       } else {
          handleNoGeolocation(false);
       }
-      
+
    } else {
          var pos = new google.maps.LatLng(gLat,gLng);
          initForecast(gLat,gLng);
@@ -55,13 +55,13 @@ function initMap(gLat, gLng) {
          getCity(gLat,gLng);
          var marker = new google.maps.Marker({
             map: map,
-            position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+            position: new google.maps.LatLng(gLat,gLng),
             title: 'Hi!'
          });
          map.setCenter(pos);
    }
    $(window).on("focus", function() {
-      initForecast(gLat,gLng); 
+      initForecast(gLat,gLng);
    });
 }
 
@@ -119,7 +119,7 @@ function initForecast(myLat,myLon) {
             case "BREEZY":
                $('span#wSummary', $('body')).html("<img class='wImage' src='icons/wind.svg' />");
                break;
-            default: 
+            default:
                $('span#wSummary', $('body')).text(data.currently.summary.toUpperCase());
           }
           $('span#wTemp', $('body')).text(Math.round(data.currently.temperature));
@@ -160,7 +160,7 @@ function initForecast(myLat,myLon) {
           $('span#fMoon3', $('body')).text(getMoonPhase(getMoonAge(data.daily.data[2].time)));
           $('span#fMoon4', $('body')).text(getMoonPhase(getMoonAge(data.daily.data[3].time)));
           $('span#fMoon5', $('body')).text(getMoonPhase(getMoonAge(data.daily.data[4].time)));
-          
+
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
          console.log(textStatus, errorThrown);
@@ -212,12 +212,12 @@ function convertToPercent(fraction) {
    return Math.round((fraction * 100) * 100)/100 + '%';
 }
 
-function getMoonAge(unixTime) {	
+function getMoonAge(unixTime) {
    var a = new Date(unixTime*1000);
    var year = a.getFullYear();
    var month = a.getMonth();
    var day = a.getDate();
-   
+
    d = Math.floor(year/20);
    r = year-(d*20);
    while (r>9) {
@@ -242,8 +242,8 @@ function getMoonAge(unixTime) {
    }
    return r;
 }
-		
-function getMoonPhase(moonAge) {	
+
+function getMoonPhase(moonAge) {
    if (moonAge<1) return "New";
    if (moonAge<6) return "Waxing Crescent";
    if (moonAge<9) return "First Quarter";
