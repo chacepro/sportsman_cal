@@ -51,8 +51,21 @@ div#nowMain {
    /*border: 1px solid silver;*/
 }
 
-span.fLow { color: blue; }
-span.fHigh { color: red; }
+span.LowHigh {
+   position: relative;
+}
+
+span.wthrVal {
+   position: relative;
+}
+
+span.fLow { 
+   color: blue;
+}
+
+span.fHigh { 
+   color: red; 
+}
 
 span.genHeading {
    font-weight: bold;

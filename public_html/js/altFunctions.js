@@ -26,7 +26,7 @@ function initMap() {
          var marker = new google.maps.Marker({
             map: map,
             position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
-            title: 'BangBang'
+            title: 'Hi!'
          });
          map.setCenter(pos);
       }, function(error) {
@@ -174,7 +174,7 @@ function unixToDate(unixTime){
  }
 
 function convertToPercent(fraction) {
-   if (fraction == " ") fraction = 0;
+   if (fraction === " ") fraction = 0;
    return Math.round((fraction * 100) * 100)/100 + '%';
 }
 
