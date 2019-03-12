@@ -9,7 +9,11 @@
  $(document).ready(function () {
      updateMetrics();
      updateStyleSheet();
- })
+    $('input#entry').keypress(function(e){
+      if(e.keyCode==13)
+      $('#find').click();
+    });
+ });
  $(window).resize(function () {
      updateMetrics();
      updateStyleSheet();
@@ -40,7 +44,7 @@
    var Location = Backbone.View.extend({
        el: $('body'),
        events: {
-         'click button#zip': 'getZip'
+         'click #find': 'getZip'
        },
        initialize: function(){
          _.bindAll(this, 'render', 'getZip');
@@ -57,9 +61,23 @@
                    var length = 19;
                    $('div#myLoc', this.el).html('');
                    for (var i = 0; i <= length; i++) {
+                       /* '6 is lat, 7 is long */
                        var myTemp = $('div#myLoc', this.el).html();
-                       $('div#myLoc', this.el).html(myTemp + '</br>' + zip.attributes[i]);
+                       if (i == 3) {
+                           $('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i] + ', ');
+                       }  else if (i == 4) {
+                           $('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i]);
+                       } else if (i == 6) {
+                           //$('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i] + ',');
+                           var srchLat = zip.attributes[i];
+                       } else if (i == 7) {
+                           //$('div#myLoc', this.el).html(myTemp + '' + zip.attributes[i]);
+                           var srchLng = zip.attributes[i];
+                       }
                    }
+                  initMap(srchLat,srchLng)
+                   //initForecast(srchLat,srchLng);
+                   //getCity(srchLat,srchLng);
                }
            })
        }

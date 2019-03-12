@@ -6,6 +6,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <link rel="stylesheet" type="text/css" href="css/sportsman1.css" class="main">
       <link href='http://fonts.googleapis.com/css?family=Archivo+Narrow:400,700,400italic' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
       <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
       <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
       <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
@@ -16,8 +17,17 @@
       <script type="text/javascript" src="js/altFunctions.js"></script>
    </head>
    <body>
-      <div id="map-canvas" style="position: fixed; width: 100%; height: 300px;"></div>
-
+      
+      <div class='menu_chunk'>
+         <input type='text' id='entry' placeholder="Search ZIP...">
+         <img id='find' src="icons/search2.png" />
+         <div id='myLoc'></div>
+      </div>
+      
+      <div class="map-container">
+         <div id="map-canvas"></div>
+      </div>
+      
       <div id="geoLoc">
          <span class="wthrKey">Approximate Location: </span>
          <span class="wthrVal" id="gLocation"></span> 
@@ -26,12 +36,8 @@
          (<span class="wthrVal" id="gCounty"></span>), 
          <span class="wthrVal" id="gCountry"></span> 
          <span class="wthrVal" id="gZip"></span>
-         (LAT: <span class="wthrVal" id="gLat"></span> 
-         LNG: <span class="wthrVal" id="gLng"></span>)</br>
-      </div>
-      <div class='chunk'>
-       Search ZIP code: <input type='text' id='entry'> <button id='zip'>Search...</button></br>
-      <div id='myLoc'>...</div>
+         (<span class="wthrVal" id="gLat"></span>
+         ,<span class="wthrVal" id="gLng"></span>)</br>
       </div>
     
       <div id='weather'>
@@ -92,13 +98,13 @@
                   (<span class="wthrVal" id="fMoon5"></span>)</br>
             </div>
          </div>
-
       </div>
+
         <div class="chunk">
             <b>IN SEASON:</b><br/>
             Trouser Snake<br/>
             Rabbit<br/><br/>
-            <b>COMING UP...</b><br/>
+            <b>COMING UP....</b><br/>
             Dolphins<br/>
         </div>
         <div class="chunk">

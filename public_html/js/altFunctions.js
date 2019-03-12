@@ -3,41 +3,66 @@
  * and open the template in the editor
  
  ZIP CODES: http://federalgovernmentzipcodes.us/
+ AUTO COMPLETE: https://www.devbridge.com/sourcery/components/jquery-autocomplete/
  */
 
-function initMap() {
+function initMap(gLat, gLng) {
+   gLat = gLat || 0;
+   gLng = gLng || 0;
+   $(window).off('focus');
    var map;
    var mapOptions = {
       zoom: 14,
-      //center: new google.maps.LatLng(myLat,myLon),
+      // TERRAIN, ROADMAP, SATELLITE, HYBRID
       mapTypeId: google.maps.MapTypeId.ROADMAP
    };
    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
      // Try HTML5 geolocation
-   if(navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-         var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-         initForecast(position.coords.latitude,position.coords.longitude);
-         //$(document).focus(function(){ initForecast(position.coords.latitude,position.coords.longitude); });
-         $(window).focus(function() { initForecast(position.coords.latitude,position.coords.longitude); });
-         $("div#weather",$("body")).slideToggle();
-         $("div.chunk",$("body")).slideToggle();
-         getCity(position.coords.latitude,position.coords.longitude);
+   if(gLat == 0 && gLng == 0) {
+      
+      if(navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(function(position) {
+            gLat = position.coords.latitude
+            gLng = position.coords.longitude
+            var pos = new google.maps.LatLng(gLat,gLng);
+            initForecast(gLat,gLng);
+
+            $("div#weather",$("body")).slideToggle();
+            $("div.chunk",$("body")).slideToggle();
+            getCity(gLat,gLng);
+            var marker = new google.maps.Marker({
+               map: map,
+               position: new google.maps.LatLng(gLat,gLng),
+               title: 'BangBang'
+            });
+            map.setCenter(pos);
+         }, function(error) {
+            handleNoGeolocation(true);
+         }, {
+            maximumAge: 600000, 
+            timeout: 10000
+         });
+      } else {
+         handleNoGeolocation(false);
+      }
+      
+   } else {
+         var pos = new google.maps.LatLng(gLat,gLng);
+         initForecast(gLat,gLng);
+
+         //$("div#weather",$("body")).slideToggle();
+         //$("div.chunk",$("body")).slideToggle();
+         getCity(gLat,gLng);
          var marker = new google.maps.Marker({
             map: map,
             position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
             title: 'Hi!'
          });
          map.setCenter(pos);
-      }, function(error) {
-         handleNoGeolocation(true);
-      }, {
-         maximumAge: 600000, 
-         timeout: 10000
-      });
-   } else {
-      handleNoGeolocation(false);
    }
+   $(window).on("focus", function() {
+      initForecast(gLat,gLng); 
+   });
 }
 
 function handleNoGeolocation(errorFlag) {
@@ -80,10 +105,19 @@ function initForecast(myLat,myLon) {
                $('span#wSummary', $('body')).html("<img class='wImage' src='icons/fog.png' />");
                break;
             case "MOSTLY CLOUDY":
-               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.png' />");
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.svg' />");
+               break;
+            case "PARTLY CLOUDY":
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/partly-cloudy-day.svg' />");
                break;
             case "OVERCAST":
-               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.png' />");
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/cloudy.svg' />");
+               break;
+            case "CLEAR":
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/clear-day.svg' />");
+               break;
+            case "BREEZY":
+               $('span#wSummary', $('body')).html("<img class='wImage' src='icons/wind.svg' />");
                break;
             default: 
                $('span#wSummary', $('body')).text(data.currently.summary.toUpperCase());
@@ -247,7 +281,9 @@ function getCity(lat, lng) {
             $('span#gCounty', $('body')).text(county.short_name);
             $('span#gState', $('body')).text(state.short_name);
             $('span#gCountry', $('body')).text(country.short_name);
-            $('span#gZip', $('body')).text(zip.short_name);
+            if (zip) {
+               $('span#gZip', $('body')).text(zip.short_name);
+            }
             $('span#gLat', $('body')).text(lat);
             $('span#gLng', $('body')).text(lng);
             $("div#geoLoc",$("body")).slideToggle();
