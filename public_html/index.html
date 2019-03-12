@@ -13,33 +13,33 @@
       <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>
       <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
       <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?v=3.2exp&sensor=false"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCch_4Qf7jIB080t7bm0p61qGZrDREpy4A"></script>
       <script type="text/javascript" src="js/altFunctions.js"></script>
    </head>
    <body>
-      
+
       <div class='menu_chunk'>
          <input type='text' id='entry' placeholder="Search ZIP...">
          <img id='find' src="icons/search2.png" />
          <div id='myLoc'></div>
       </div>
-      
+
       <div class="map-container">
          <div id="map-canvas"></div>
       </div>
-      
+
       <div id="geoLoc">
          <span class="wthrKey">Approximate Location: </span>
-         <span class="wthrVal" id="gLocation"></span> 
-         <span class="wthrVal" id="gCity"></span>, 
-         <span class="wthrVal" id="gState"></span> 
-         (<span class="wthrVal" id="gCounty"></span>), 
-         <span class="wthrVal" id="gCountry"></span> 
+         <span class="wthrVal" id="gLocation"></span>
+         <span class="wthrVal" id="gCity"></span>,
+         <span class="wthrVal" id="gState"></span>
+         (<span class="wthrVal" id="gCounty"></span>),
+         <span class="wthrVal" id="gCountry"></span>
          <span class="wthrVal" id="gZip"></span>
          (<span class="wthrVal" id="gLat"></span>
          ,<span class="wthrVal" id="gLng"></span>)</br>
       </div>
-    
+
       <div id='weather'>
          <div id="nowWrap">
             <div id="nowMain">
@@ -49,7 +49,7 @@
             </div>
             <div id="nowSub1">
                <span class="wthrKey">Rise: </span>
-               <span class="wthrVal" id="wSunrise">0</span> - 
+               <span class="wthrVal" id="wSunrise">0</span> -
                <span class="wthrKey">Set: </span>
                <span class="wthrVal" id="wSunset">0</span></br>
                <span class="wthrKey">Moon: </span>
@@ -73,28 +73,28 @@
                <span class="wthrKey">Pressure: </span>
                <span class="wthrVal" id="wPressure">0</span> hPa</br>
                <span class="wthrKey">Visibility: </span>
-               <span class="wthrVal" id="wVisibility">0</span></br> 
+               <span class="wthrVal" id="wVisibility">0</span></br>
             </div>
             <div id="nowSub2">
                <!--<span class="genHeading">Forecast</span></br>-->
-               <span class="wthrKey" id="fDay1"></span>: 
-                  <span class="wthrVal" id="fSumm1"></span> 
+               <span class="wthrKey" id="fDay1"></span>:
+                  <span class="wthrVal" id="fSumm1"></span>
                   (<span class="wthrVal" id="fMoon1"></span>)</br>
-               <span class="wthrKey" id="fDay2"></span>: 
-                  <span class="wthrVal" id="fSumm2"></span> 
-                  <span class="fLow" id="fLow2"></span>/<span class="fHigh" id="fHigh2"></span> 
+               <span class="wthrKey" id="fDay2"></span>:
+                  <span class="wthrVal" id="fSumm2"></span>
+                  <span class="fLow" id="fLow2"></span>/<span class="fHigh" id="fHigh2"></span>
                   (<span class="wthrVal" id="fMoon2"></span>) </br>
-               <span class="wthrKey" id="fDay3"></span>: 
-                  <span class="wthrVal" id="fSumm3"></span> 
-                  <span class="fLow" id="fLow3"></span>/<span class="fHigh" id="fHigh3"></span> 
+               <span class="wthrKey" id="fDay3"></span>:
+                  <span class="wthrVal" id="fSumm3"></span>
+                  <span class="fLow" id="fLow3"></span>/<span class="fHigh" id="fHigh3"></span>
                   (<span class="wthrVal" id="fMoon3"></span>)</br>
-               <span class="wthrKey" id="fDay4"></span>: 
-                  <span class="wthrVal" id="fSumm4"></span> 
-                  <span class="fLow" id="fLow4"></span>/<span class="fHigh" id="fHigh4"></span> 
+               <span class="wthrKey" id="fDay4"></span>:
+                  <span class="wthrVal" id="fSumm4"></span>
+                  <span class="fLow" id="fLow4"></span>/<span class="fHigh" id="fHigh4"></span>
                   (<span class="wthrVal" id="fMoon4"></span>)</br>
-               <span class="wthrKey" id="fDay5"></span>: 
-                  <span class="wthrVal" id="fSumm5"></span> 
-                  <span class="fLow" id="fLow5"></span>/<span class="fHigh" id="fHigh5"></span> 
+               <span class="wthrKey" id="fDay5"></span>:
+                  <span class="wthrVal" id="fSumm5"></span>
+                  <span class="fLow" id="fLow5"></span>/<span class="fHigh" id="fHigh5"></span>
                   (<span class="wthrVal" id="fMoon5"></span>)</br>
             </div>
          </div>
