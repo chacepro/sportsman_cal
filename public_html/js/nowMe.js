@@ -1,7 +1,7 @@
 /*
  CREATED: 4/30/13
  Hmmmm
- BY: Chace L. Prochazka
+ BY: Chace L Prochazka
  */
 
 (function ($) {
