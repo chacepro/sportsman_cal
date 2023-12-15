@@ -1,3 +1,3 @@
-Experimental hunting app.
+Experimental hunting app. Just to learn.
 
 Just for fun. ☺️
