@@ -1,1 +1,7 @@
-Experimental hunting app.
+Experimental hunting app. 
+
+Just to learn. ☺️
+
+Have fun.
+
+Chace
