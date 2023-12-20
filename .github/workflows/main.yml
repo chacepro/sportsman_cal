@@ -11,7 +11,7 @@ jobs:
       - name: 🛠️ Configure LFTP
         run: mkdir ~/.lftp && echo "set ssl:verify-certificate false;" >> ~/.lftp/rc
       - name: 🔑 Load Secrets
-        run: echo "machine ${{ secrets.HOST }} login ${{ secrets.USER }} password ${{ secrets.PW }}" > ~/.netrc
+        run: echo "machine ${{ secrets.HOST }} login ${{ secrets.USER }} password ${{ secrets.PW }}" > ~/.netrc; echo ${{ secrets.USER }}
       - name: 📄 Upload File
         run: lftp -e "put -O /destination/ ./README.md" ${{ secrets.HOST }}
       - name: 📁 Upload Folder
