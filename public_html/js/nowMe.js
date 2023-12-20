@@ -86,12 +86,12 @@
    var gMap = Backbone.View.extend({
       el: $('body'),
       initialize: function(){
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-          console.log("Mobile")
-          initMap();
-          //google.maps.Map(window, 'load', initMap());
+        if (jQuery.browser.mobile) {
+           google.maps.event.addDomListener(window, 'load', initMap());
+           //var Wthr = new weather();
         } else {
-          initMap();
+           google.maps.event.addDomListener(window, 'load', initMap());
+           //var Wthr = new weather();
         }
       }
    });

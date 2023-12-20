@@ -10,51 +10,38 @@ function initMap(gLat, gLng) {
    gLat = gLat || 0;
    gLng = gLng || 0;
    $(window).off('focus');
-   
-  //const myMap = () => google.maps.importLibrary("maps");
-  
+   var map;
    var mapOptions = {
       zoom: 14,
-      //center: tmpLatlng,
       // TERRAIN, ROADMAP, SATELLITE, HYBRID
-      mapTypeId: 'roadmap'
+      mapTypeId: google.maps.MapTypeId.ROADMAP
    };
-   
-   const options = {
-     enableHighAccuracy: true,
-     timeout: 5000,
-     maximumAge: 0
-   }; 
-   
-   function error(err) {
-    console.log(err.code + ": " + err.message);
-   };
-   
-   var map = () => new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
      // Try HTML5 geolocation
    if(gLat == 0 && gLng == 0) {
 
       if(navigator.geolocation) {
-       
          navigator.geolocation.getCurrentPosition(function(position) {
             gLat = position.coords.latitude
             gLng = position.coords.longitude
-            console.log(gLat + " | " + gLng);
-            var pos = () => new google.maps.LatLng(gLat,gLng);
+            var pos = new google.maps.LatLng(gLat,gLng);
             initForecast(gLat,gLng);
-            console.log("Initializing forecast...");
+
             $("div#weather",$("body")).slideToggle();
             $("div.chunk",$("body")).slideToggle();
             getCity(gLat,gLng);
-            var center = () => new google.maps.LatLng(gLat,gLng)
-            var marker = () => new google.maps.Marker({
+            var marker = new google.maps.Marker({
                map: map,
-               position: center,
+               position: new google.maps.LatLng(gLat,gLng),
                title: 'BangBang'
             });
-            console.log(center);
-            //map.setCenter(center);
-         }, error, options);
+            map.setCenter(pos);
+         }, function(error) {
+            handleNoGeolocation(true);
+         }, {
+            maximumAge: 600000,
+            timeout: 10000
+         });
       } else {
          handleNoGeolocation(false);
       }
@@ -66,7 +53,7 @@ function initMap(gLat, gLng) {
          //$("div#weather",$("body")).slideToggle();
          //$("div.chunk",$("body")).slideToggle();
          getCity(gLat,gLng);
-         var marker = () => new google.maps.Marker({
+         var marker = new google.maps.Marker({
             map: map,
             position: new google.maps.LatLng(gLat,gLng),
             title: 'Hi!'
@@ -85,7 +72,14 @@ function handleNoGeolocation(errorFlag) {
       var content = 'Error: Your browser doesn\'t support geolocation.';
    }
 
-   console.log(content);
+   var options = {
+      map: map,
+      position: new google.maps.LatLng(0,0),
+      content: content
+   };
+
+   var infowindow = new google.maps.InfoWindow(options);
+   map.setCenter(options.position);
 }
 
 function initForecast(myLat,myLon) {
@@ -263,10 +257,9 @@ function getMoonPhase(moonAge) {
 }
 
 function getCity(lat, lng) {
-   var geocoder = () => new google.maps.Geocoder();
-   var latlng = () => new google.maps.LatLng(lat, lng);
-   
-   () => geocoder.geocode({'latLng': latlng}, function(results, status) {
+   var geocoder = new google.maps.Geocoder();
+   var latlng = new google.maps.LatLng(lat, lng);
+   geocoder.geocode({'latLng': latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
          if (results[1]) {
             for (var i=0; i<results[0].address_components.length; i++) {
