@@ -8,9 +8,9 @@ jobs:
       - name: 🛒 FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
-          ftp-server: ${{ secrets.FTP_SERVER }}
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          ftp-server: ${{ secrets.HOST }}
+          ftp-username: ${{ secrets.USER }}
+          ftp-password: ${{ secrets.PW }}
           local-dir: toupload
       ##- name: 📦 Get LFTP
       ##  run: sudo apt install lftp
