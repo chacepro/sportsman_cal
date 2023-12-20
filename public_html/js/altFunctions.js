@@ -12,7 +12,7 @@ function initMap(gLat, gLng) {
    $(window).off('focus');
    var map;
    var mapOptions = {
-      zoom: 14,
+      zoom: 15,
       // TERRAIN, ROADMAP, SATELLITE, HYBRID
       mapTypeId: google.maps.MapTypeId.ROADMAP
    };
