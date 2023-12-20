@@ -4,14 +4,22 @@ jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 🛒 Checkout
-        uses: actions/checkout@v2.1.0
-      - name: 📦 Get LFTP
-        run: sudo apt install lftp
-      - name: 🛠️ Configure LFTP
-        run: mkdir ~/.lftp && echo "set ssl:verify-certificate false;" >> ~/.lftp/rc
+      - uses: actions/checkout@v2.1.0
+      - name: 🛒 FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: ${{ secrets.FTP_SERVER }}
+          ftp-username: ${{ secrets.FTP_USERNAME }}
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: toupload
+      ##- name: 📦 Get LFTP
+      ##  run: sudo apt install lftp
+      ##- name: 🛠️ Configure LFTP
+      ##  run: mkdir ~/.lftp && echo "set ssl:verify-certificate false;" >> ~/.lftp/rc
       - name: 🔑 Load Secrets
         run: echo "machine ${{ secrets.HOST }} login ${{ secrets.USER }} password ${{ secrets.PW }}" > ~/.netrc
+      - name: Where am I?
+        run: ls
       - name: 📄 Upload File
         run: lftp -e "put -O /public_html/cpgit/ ./README.md" -u ${{ secrets.USER }}:${{ secrets.PW }}@${{ secrets.HOST }}
       - name: 📁 Upload Folders
