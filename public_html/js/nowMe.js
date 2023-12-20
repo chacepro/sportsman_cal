@@ -76,7 +76,7 @@
                        }
                    }
                   initMap(srchLat,srchLng)
-                   //initForecast(srchLat,srchLng);
+                  //initForecast(srchLat,srchLng);
                    //getCity(srchLat,srchLng);
                }
            })
@@ -87,10 +87,10 @@
       el: $('body'),
       initialize: function(){
         if (jQuery.browser.mobile) {
-           google.maps.event.addDomListener(window, 'load', initMap());
+           //google.maps.event.addDomListener(window, 'load', initMap());
            //var Wthr = new weather();
         } else {
-           google.maps.event.addDomListener(window, 'load', initMap());
+           //google.maps.event.addDomListener(window, 'load', initMap());
            //var Wthr = new weather();
         }
       }
