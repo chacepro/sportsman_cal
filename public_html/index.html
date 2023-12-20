@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
    <head>
@@ -12,119 +11,121 @@
       <script type="text/javascript" src="https://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
       <script type="text/javascript" src="https://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>
       <script type="text/javascript" src="https://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
-      <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-      <script src="https://aerialview.googleapis.com/maps/api/js?key=AIzaSyCch_4Qf7jIB080t7bm0p61qGZrDREpy4A"></script>-->
-      <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCch_4Qf7jIB080t7bm0p61qGZrDREpy4A"></script>
       <script type="text/javascript" src="js/altFunctions.js"></script>
    </head>
    <body>
 
-      <div class='menu_chunk'>
-         <input type='text' id='entry' placeholder="Search ZIP...">
-         <img id='find' src="icons/search2.png" />
-         <div id='myLoc'></div>
+  <div class='menu_chunk'>
+    <input type='text' id='entry' placeholder="Search ZIP...">
+    <img id='find' src="icons/search2.png" />
+    <div id='myLoc'></div>
+  </div>
+
+  <div class="map-container">
+    <div id="map-canvas"></div>
+  </div>
+
+  <div id="geoLoc">
+    <span class="wthrKey">Approximate Location: </span>
+    <span class="wthrVal" id="gLocation"></span>
+    <span class="wthrVal" id="gCity"></span>,
+    <span class="wthrVal" id="gState"></span>
+    (<span class="wthrVal" id="gCounty"></span>),
+    <span class="wthrVal" id="gCountry"></span>
+    <span class="wthrVal" id="gZip"></span>
+    (<span class="wthrVal" id="gLat"></span>
+    ,<span class="wthrVal" id="gLng"></span>)</br>
+  </div>
+
+  This is a sin.
+
+  <div id='weather'>
+    <div id="nowWrap">
+      <div id="nowMain">
+        <span class="nowTemp" id="wTemp">0</span><span class="degreeSym">°</span></br>
+        <span class="fLow" id="fLow1"></span> / <span class="fHigh" id="fHigh1"></span></br>
+        <span class="wthrVal" id="wSummary">0</span></br>
       </div>
-
-      <div class="map-container">
-         <div id="map-canvas"></div>
+      <div id="nowSub1">
+        <span class="wthrKey">Rise: </span>
+        <span class="wthrVal" id="wSunrise">0</span> -
+        <span class="wthrKey">Set: </span>
+        <span class="wthrVal" id="wSunset">0</span></br>
+        <span class="wthrKey">Moon: </span>
+        <span class="wthrVal" id="wMoon">0</span></br>
+        <span class="wthrKey">Precipitation: </span>
+        <span class="wthrVal" id="wPreProb">0</span></br>
+        <span class="wthrKey">Precipitation Type: </span>
+        <span class="wthrVal" id="wPreType">0</span></br>
+        <span class="wthrKey">Dew Point: </span>
+        <span class="wthrVal" id="wDewPoint">0</span></br>
       </div>
-
-      <div id="geoLoc">
-         <span class="wthrKey">Approximate Location: </span>
-         <span class="wthrVal" id="gLocation"></span>
-         <span class="wthrVal" id="gCity"></span>,
-         <span class="wthrVal" id="gState"></span>
-         (<span class="wthrVal" id="gCounty"></span>),
-         <span class="wthrVal" id="gCountry"></span>
-         <span class="wthrVal" id="gZip"></span>
-         (<span class="wthrVal" id="gLat"></span>
-         ,<span class="wthrVal" id="gLng"></span>)</br>
+      <div id="nowSub1">
+        <span class="wthrKey">Wind: </span>
+        <span class="wthrVal" id="wWindSpeed">0</span>
+        <span class="wthrKey"> at </span>
+        <span class="wthrVal" id="wWindBearing">0</span></br>
+        <span class="wthrKey">Cloud Cover: </span>
+        <span class="wthrVal" id="wCloudCover">0</span></br>
+        <span class="wthrKey">Humidity: </span>
+        <span class="wthrVal" id="wHumidity">0</span></br>
+        <span class="wthrKey">Pressure: </span>
+        <span class="wthrVal" id="wPressure">0</span> hPa</br>
+        <span class="wthrKey">Visibility: </span>
+        <span class="wthrVal" id="wVisibility">0</span></br>
       </div>
-
-      <div id='weather'>
-         <div id="nowWrap">
-            <div id="nowMain">
-               <span class="nowTemp" id="wTemp">0</span><span class="degreeSym">°</span></br>
-               <span class="fLow" id="fLow1"></span> / <span class="fHigh" id="fHigh1"></span></br>
-               <span class="wthrVal" id="wSummary">0</span></br>
-            </div>
-            <div id="nowSub1">
-               <span class="wthrKey">Rise: </span>
-               <span class="wthrVal" id="wSunrise">0</span> -
-               <span class="wthrKey">Set: </span>
-               <span class="wthrVal" id="wSunset">0</span></br>
-               <span class="wthrKey">Moon: </span>
-               <span class="wthrVal" id="wMoon">0</span></br>
-               <span class="wthrKey">Precipitation: </span>
-               <span class="wthrVal" id="wPreProb">0</span></br>
-               <span class="wthrKey">Precipitation Type: </span>
-               <span class="wthrVal" id="wPreType">0</span></br>
-               <span class="wthrKey">Dew Point: </span>
-               <span class="wthrVal" id="wDewPoint">0</span></br>
-            </div>
-            <div id="nowSub1">
-               <span class="wthrKey">Wind: </span>
-               <span class="wthrVal" id="wWindSpeed">0</span>
-               <span class="wthrKey"> at </span>
-               <span class="wthrVal" id="wWindBearing">0</span></br>
-               <span class="wthrKey">Cloud Cover: </span>
-               <span class="wthrVal" id="wCloudCover">0</span></br>
-               <span class="wthrKey">Humidity: </span>
-               <span class="wthrVal" id="wHumidity">0</span></br>
-               <span class="wthrKey">Pressure: </span>
-               <span class="wthrVal" id="wPressure">0</span> hPa</br>
-               <span class="wthrKey">Visibility: </span>
-               <span class="wthrVal" id="wVisibility">0</span></br>
-            </div>
-            <div id="nowSub2">
-               <!--<span class="genHeading">Forecast</span></br>-->
-               <span class="wthrKey" id="fDay1"></span>:
-                  <span class="wthrVal" id="fSumm1"></span>
-                  (<span class="wthrVal" id="fMoon1"></span>)</br>
-               <span class="wthrKey" id="fDay2"></span>:
-                  <span class="wthrVal" id="fSumm2"></span>
-                  <span class="fLow" id="fLow2"></span>/<span class="fHigh" id="fHigh2"></span>
-                  (<span class="wthrVal" id="fMoon2"></span>) </br>
-               <span class="wthrKey" id="fDay3"></span>:
-                  <span class="wthrVal" id="fSumm3"></span>
-                  <span class="fLow" id="fLow3"></span>/<span class="fHigh" id="fHigh3"></span>
-                  (<span class="wthrVal" id="fMoon3"></span>)</br>
-               <span class="wthrKey" id="fDay4"></span>:
-                  <span class="wthrVal" id="fSumm4"></span>
-                  <span class="fLow" id="fLow4"></span>/<span class="fHigh" id="fHigh4"></span>
-                  (<span class="wthrVal" id="fMoon4"></span>)</br>
-               <span class="wthrKey" id="fDay5"></span>:
-                  <span class="wthrVal" id="fSumm5"></span>
-                  <span class="fLow" id="fLow5"></span>/<span class="fHigh" id="fHigh5"></span>
-                  (<span class="wthrVal" id="fMoon5"></span>)</br>
-            </div>
-         </div>
+      <div id="nowSub2">
+        <!--<span class="genHeading">Forecast</span></br>-->
+        <span class="wthrKey" id="fDay1"></span>:
+        <span class="wthrVal" id="fSumm1"></span>
+        (<span class="wthrVal" id="fMoon1"></span>)</br>
+        <span class="wthrKey" id="fDay2"></span>:
+        <span class="wthrVal" id="fSumm2"></span>
+        <span class="fLow" id="fLow2"></span>/<span class="fHigh" id="fHigh2"></span>
+        (<span class="wthrVal" id="fMoon2"></span>) </br>
+        <span class="wthrKey" id="fDay3"></span>:
+        <span class="wthrVal" id="fSumm3"></span>
+        <span class="fLow" id="fLow3"></span>/<span class="fHigh" id="fHigh3"></span>
+        (<span class="wthrVal" id="fMoon3"></span>)</br>
+        <span class="wthrKey" id="fDay4"></span>:
+        <span class="wthrVal" id="fSumm4"></span>
+        <span class="fLow" id="fLow4"></span>/<span class="fHigh" id="fHigh4"></span>
+        (<span class="wthrVal" id="fMoon4"></span>)</br>
+        <span class="wthrKey" id="fDay5"></span>:
+        <span class="wthrVal" id="fSumm5"></span>
+        <span class="fLow" id="fLow5"></span>/<span class="fHigh" id="fHigh5"></span>
+        (<span class="wthrVal" id="fMoon5"></span>)</br>
       </div>
+    </div>
+  </div>
 
-        <div class="chunk">
-            <b>IN SEASON:</b><br/>
-            Trouser Snake<br/>
-            Terrorists<br/>
-            Rabbit<br/><br/>
-            <b>COMING UP:</b><br/>
-            Dolphins<br/>
-            Pedos<br/>
-            TB12<br/>
-        </div>
-        <div class="chunk">
-            <div class="metaInfo" id="browserSize"></div>
-            <div class="metaInfo" id="metrics"> <span>Window: </span>
-             <span id="winH">0</span> x <span id="winW">0</span>
-                <br/> <span>Document: </span>
-             <span id="docH">0</span> x <span id="docW">0</span>
-                <br/> <span>Scroll: </span>
-             <span id="scrH">0</span> x <span id="scrW">0</span>
-                <br/><span>Device: </span>
-                <span id="yDevice"> 0 </span>
-            </div>
-        </div>
+  Second & third.<br />
 
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCch_4Qf7jIB080t7bm0p61qGZrDREpy4A&callback=initMap&v=beta" defer></script>
-        <script src="js/nowMe.js"></script>
+  <div class="chunk">
+    <b>IN SEASON:</b><br />
+    Trouser Snake<br />
+    Terrorists<br />
+    Rabbit<br /><br />
+    <b>COMING UP:</b><br />
+    Dolphins<br />
+    Pedos<br />
+    TB12<br />
+  </div>
+  <div class="chunk">
+    <div class="metaInfo" id="browserSize"></div>
+    <div class="metaInfo" id="metrics"> <span>Window: </span>
+      <span id="winH">0</span> x <span id="winW">0</span>
+      <br /> <span>Document: </span>
+      <span id="docH">0</span> x <span id="docW">0</span>
+      <br /> <span>Scroll: </span>
+      <span id="scrH">0</span> x <span id="scrW">0</span>
+      <br /><span>Device: </span>
+      <span id="yDevice"> 0 </span>
+    </div>
+  </div>
+
+      <script src="js/nowMe.js"></script>
    </body>
 </html>
