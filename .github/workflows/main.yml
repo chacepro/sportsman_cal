@@ -11,7 +11,7 @@ jobs:
       - name: 🛠️ Configure LFTP
         run: mkdir ~/.lftp && echo "set ssl:verify-certificate false;" >> ~/.lftp/rc
       - name: Fart
-        run: ls
+        run: ls; cd public_html; ls
       - name: 🔑 Load Secrets
         run: echo "machine ${{ secrets.HOST }} login ${{ secrets.USER }} password ${{ secrets.PW }}" > ~/.netrc
       - name: 📄 Upload File
