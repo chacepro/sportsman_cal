@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🛒 Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.1.0
       - name: 📦 Get LFTP
         run: sudo apt install lftp
       - name: 🛠️ Configure LFTP
@@ -13,6 +13,6 @@ jobs:
       - name: 🔑 Load Secrets
         run: echo "machine ${{ secrets.HOST }} login ${{ secrets.USER }} password ${{ secrets.PW }}" > ~/.netrc
       - name: 📄 Upload File
-        run: lftp -e "put -O /public_html/cpgit/ ./README.md" -u ${{ secrets.USER }},${{ secrets.PW }} ${{ secrets.HOST }}
+        run: lftp -e "put -O /public_html/cpgit/ ./README.md" -u ${{ secrets.USER }}, ${{ secrets.PW }} ${{ secrets.HOST }}
       - name: 📁 Upload Folders
         run: lftp -e "mirror --parallel=100 " ${{ secrets.HOST }}
