@@ -12,8 +12,9 @@
       <script type="text/javascript" src="https://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
       <script type="text/javascript" src="https://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js"></script>
       <script type="text/javascript" src="https://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
-      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCch_4Qf7jIB080t7bm0p61qGZrDREpy4A"></script>
+      <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+      <script src="https://aerialview.googleapis.com/maps/api/js?key=AIzaSyCch_4Qf7jIB080t7bm0p61qGZrDREpy4A"></script>-->
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
       <script type="text/javascript" src="js/altFunctions.js"></script>
    </head>
    <body>
@@ -39,8 +40,6 @@
          (<span class="wthrVal" id="gLat"></span>
          ,<span class="wthrVal" id="gLng"></span>)</br>
       </div>
-
-      This is a sin.
 
       <div id='weather'>
          <div id="nowWrap">
@@ -125,6 +124,7 @@
             </div>
         </div>
 
-      <script src="js/nowMe.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCch_4Qf7jIB080t7bm0p61qGZrDREpy4A&callback=initMap&v=beta" defer></script>
+        <script src="js/nowMe.js"></script>
    </body>
 </html>
