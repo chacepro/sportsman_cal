@@ -16,10 +16,10 @@ jobs:
       ##  run: sudo apt install lftp
       ##- name: 🛠️ Configure LFTP
       ##  run: mkdir ~/.lftp && echo "set ssl:verify-certificate false;" >> ~/.lftp/rc
-      - name: 🔑 Load Secrets
-        run: echo "machine ${{ secrets.HOST }} login ${{ secrets.USER }} password ${{ secrets.PW }}" > ~/.netrc
       - name: Where am I?
         run: ls
+      - name: 🔑 Load Secrets
+        run: echo "machine ${{ secrets.HOST }} login ${{ secrets.USER }} password ${{ secrets.PW }}" > ~/.netrc
       - name: 📄 Upload File
         run: lftp -e "put -O /public_html/cpgit/ ./README.md" -u ${{ secrets.USER }}:${{ secrets.PW }}@${{ secrets.HOST }}
       - name: 📁 Upload Folders
