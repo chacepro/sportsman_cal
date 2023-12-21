@@ -4,6 +4,8 @@ jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Where am I?
+        run: ls
       - uses: actions/checkout@v2.1.0
       - name: 🛒 FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
@@ -16,7 +18,7 @@ jobs:
       ##  run: sudo apt install lftp
       ##- name: 🛠️ Configure LFTP
       ##  run: mkdir ~/.lftp && echo "set ssl:verify-certificate false;" >> ~/.lftp/rc
-      - name: Where am I?
+      - name: Where am I now?
         run: ls
       - name: 🔑 Load Secrets
         run: echo "machine ${{ secrets.HOST }} login ${{ secrets.USER }} password ${{ secrets.PW }}" > ~/.netrc
