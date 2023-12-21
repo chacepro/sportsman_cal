@@ -13,7 +13,7 @@ jobs:
           ftp-server: ${{ secrets.HOST }}
           ftp-username: ${{ secrets.USER }}
           ftp-password: ${{ secrets.PW }}
-          local-dir: sportsman_cal
+          local-dir: E:\code\sportsman_cal\sportsman_cal\public_html
       ##- name: 📦 Get LFTP
       ##  run: sudo apt install lftp
       ##- name: 🛠️ Configure LFTP
