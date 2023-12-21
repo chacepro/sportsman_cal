@@ -3,7 +3,6 @@ on:
   push: 
     branches:
       - trunk
-name: Deploy on push
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
