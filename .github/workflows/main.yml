@@ -13,8 +13,8 @@ jobs:
           ftp-server: ${{ secrets.HOST }}
           ftp-username: ${{ secrets.USER }}
           ftp-password: ${{ secrets.PW }}
-          local-Dir: 'sportsman_cal'
-          remote-Dir: 'public_html\cpgit'
+          local-Dir: "sportsman_cal"
+          remote-Dir: "public_html\cpgit"
       ##- name: 📦 Get LFTP
       ##  run: sudo apt install lftp
       ##- name: 🛠️ Configure LFTP
@@ -24,6 +24,7 @@ jobs:
       - name: 🔑 Load Secrets
         run: echo "machine ${{ secrets.HOST }} login ${{ secrets.USER }} password ${{ secrets.PW }}" > ~/.netrc
       - name: 📄 Upload File
+        run: echo "I farted"
         ##run: lftp -e "put -O /public_html/cpgit/ ./README.md" -u ${{ secrets.USER }}:${{ secrets.PW }}@${{ secrets.HOST }}
       - name: 📁 Upload Folders
         ##run: lftp -e "mirror --parallel=100 " ${{ secrets.HOST }}
