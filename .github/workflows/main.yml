@@ -14,7 +14,6 @@ jobs:
           ftp-username: ${{ secrets.USER }}
           ftp-password: ${{ secrets.PW }}
           local-Dir: 'sportsman_cal'
-          remote-Dir: 'public_html\cpgit'
       ##- name: 📦 Get LFTP
       ##  run: sudo apt install lftp
       ##- name: 🛠️ Configure LFTP
