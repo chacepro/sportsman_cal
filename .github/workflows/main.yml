@@ -26,5 +26,5 @@ jobs:
       - name: 📄 Upload File
         run: echo "I farted"
         ##run: lftp -e "put -O /public_html/cpgit/ ./README.md" -u ${{ secrets.USER }}:${{ secrets.PW }}@${{ secrets.HOST }}
-      - name: 📁 Upload Folders
+     ## - name: 📁 Upload Folders
         ##run: lftp -e "mirror --parallel=100 " ${{ secrets.HOST }}
