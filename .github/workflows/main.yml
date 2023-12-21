@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - trunk
+      - Trunk
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
