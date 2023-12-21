@@ -13,7 +13,4 @@ jobs:
           server: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PW }}
-    - name: Where am I now?
-      run: ls
-    - name: 📄 Upload File
-      run: echo "I farted"
+          server-dir: cpgit
