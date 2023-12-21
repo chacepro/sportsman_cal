@@ -1,12 +1,17 @@
-name: 🚀 FTP Deploy
-on: [push, workflow_dispatch]
+name: 🚀 Deploy to DBC
+on: 
+  push: 
+    branches:
+      - trunk
+name: Deploy on push
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Where am I?
         run: ls
-      - uses: actions/checkout@v2.1.0
+      - name: 🔑 Load Secrets
+        run: echo "machine ${{ secrets.HOST }} login ${{ secrets.USER }} password ${{ secrets.PW }}" > ~/.netrc
       - name: 🛒 FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
@@ -15,16 +20,7 @@ jobs:
           ftp-password: ${{ secrets.PW }}
           server-dir: public_html/cpgit/
           local-Dir: .\sportsman_cal\
-      ##- name: 📦 Get LFTP
-      ##  run: sudo apt install lftp
-      ##- name: 🛠️ Configure LFTP
-      ##  run: mkdir ~/.lftp && echo "set ssl:verify-certificate false;" >> ~/.lftp/rc
       - name: Where am I now?
         run: ls
-      - name: 🔑 Load Secrets
-        run: echo "machine ${{ secrets.HOST }} login ${{ secrets.USER }} password ${{ secrets.PW }}" > ~/.netrc
       - name: 📄 Upload File
         run: echo "I farted"
-        ##run: lftp -e "put -O /public_html/cpgit/ ./README.md" -u ${{ secrets.USER }}:${{ secrets.PW }}@${{ secrets.HOST }}
-     ## - name: 📁 Upload Folders
-        ##run: lftp -e "mirror --parallel=100 " ${{ secrets.HOST }}
