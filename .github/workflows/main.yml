@@ -13,4 +13,4 @@ jobs:
           server: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PW }}
-          server-dir: cpgit/
+          server-dir: public_html/cpgit/
