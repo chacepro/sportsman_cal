@@ -1,4 +1,7 @@
-on: push
+on:
+  push:
+    branches:
+      - Trunk
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
