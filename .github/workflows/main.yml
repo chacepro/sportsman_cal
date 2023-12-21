@@ -1,7 +1,7 @@
 name: 🚀 Deploy to DBC
 on: 
   push: 
-    branches:
+    branches: 
       - trunk
 jobs:
   ftp-deploy:
