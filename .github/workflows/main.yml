@@ -3,8 +3,8 @@ on:
   push: 
     branches: 
       - trunk
-jobs:
-  ftp-deploy:
+jobs: 
+  ftp-deploy: 
     runs-on: ubuntu-latest
     steps:
       - name: Where am I?
