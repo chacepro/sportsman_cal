@@ -10,9 +10,9 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-          ftp-server: ${{ secrets.HOST }}
-          ftp-username: ${{ secrets.USER }}
-          ftp-password: ${{ secrets.PW }}
+          server: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PW }}
     - name: Where am I now?
       run: ls
     - name: 📄 Upload File
