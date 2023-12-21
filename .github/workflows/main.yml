@@ -1,8 +1,8 @@
-name: 🚀 Deploy to DBC
 on: 
   push: 
     branches: 
       - trunk
+name: 🚀 Deploy to DBC
 jobs: 
   ftp-deploy: 
     runs-on: ubuntu-latest
