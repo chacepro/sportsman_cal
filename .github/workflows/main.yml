@@ -14,4 +14,4 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.PW }}
           server-dir: public_html/demo/sportsman/
-          protocol: sftp
+          protocol: ftps
