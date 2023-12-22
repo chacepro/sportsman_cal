@@ -1,8 +1,10 @@
-/*
- CREATED: 4/30/13
- DESCRIPTION: asdfggdddd
- BY: Chace L Prochazka
- */
+/*########################################
+
+  CREATED: 4/30/13
+  DESCRIPTION: Initiate the application 
+  BY: Chace L Prochazka
+  
+########################################*/
 
 (function ($) {
 
@@ -77,7 +79,7 @@
                    }
                   initMap(srchLat,srchLng)
                   //initForecast(srchLat,srchLng);
-                   //getCity(srchLat,srchLng);
+                  //getCity(srchLat,srchLng);
                }
            })
        }
