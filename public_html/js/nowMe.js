@@ -79,7 +79,7 @@
                    }
                   initMap(srchLat,srchLng)
                   //initForecast(srchLat,srchLng);
-                   //getCity(srchLat,srchLng);
+                  //getCity(srchLat,srchLng);
                }
            })
        }
