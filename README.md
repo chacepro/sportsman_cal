@@ -1,5 +1,1 @@
-Hola.
-
-What do you know?
-
-Nothing
+Just a sample application to play with location API's
