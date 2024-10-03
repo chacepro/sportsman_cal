@@ -83,7 +83,7 @@ function handleNoGeolocation(errorFlag) {
 }
 
 function initForecast(myLat,myLon) {
-   var myForecastUrl = "https://api.forecast.io/forecast/4622c57823e29abcdf49adb804575e48/" + myLat + "," + myLon;
+   var myForecastUrl = "https://api.forecast.io/forecast/<API_KEY>/" + myLat + "," + myLon;
    $.ajax({
       url: myForecastUrl,
       dataType: 'jsonp',
